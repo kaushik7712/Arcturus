@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Play', sans-serif;
+    background: url('last.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: rgb(162, 166, 174);
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+.logo-container {
+    margin-bottom: 10px; /* Space between logo and book page */
+}
+
+.logo {
+    width: 350px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 40px;
+    opacity: 50%;
+}
+
+.book-page {
+    background: transparent; /* Semi-transparent black for contrast */
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: 0 4px 20px rgba(131, 125, 125, 0);
+    overflow: hidden;
+    text-align: left;
+    margin-bottom: 80px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.book-page:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.377);
+}
+
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-align: center;
+    color: rgba(173, 216, 230, 0.691);
+    padding-bottom: 10px;
+    position: relative;
+
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.footer img{
+    height: 40%;
+    width: 100%;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1em;
+    }
+}

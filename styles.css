@@ -1,0 +1,489 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('mission1.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: 1;
+}
+
+.logo {
+    width: 300px;
+    margin-bottom: 40px;
+    z-index: 2; /* Above the overlay */
+}
+
+.hero-content {
+    z-index: 2; /* Above the overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Article Grid */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Article Cards */
+.article-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.article-card:hover {
+    transform: translateY(-10px);
+}
+
+h2 {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-family: 'Play', sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Play', sans-serif;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Play', sans-serif;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ccc;
+}
+
+
+
+
+
+/* Unique Section with Background Image */
+.unique-section {
+    padding: 60px 20px;
+    background-image: url('cosmic1.jpg'); /* Add your background image path here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; /* White text for readability */
+    position: relative;
+    z-index: 1;
+}
+
+/* Adding a subtle dark overlay to the background */
+.unique-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 7, 12, 0.636); /* Slight dark overlay for better text contrast */
+    z-index: -1;
+}
+
+.unique-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Large Central Card */
+.large-card {
+    flex: 1 1 60%;
+    background-color: rgba(18, 30, 60, 0.64); /* Dark blue with transparency */
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    color: #e4c458c9; /* Golden tan for text */
+}
+
+.large-card:hover {
+    transform: translateY(-10px);
+}
+
+.large-card h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: orange;
+    font-family: 'Play', sans-serif;
+    font-weight: 600;
+
+}
+
+.large-card img{
+    height: 50%;
+    width: 100%;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+
+.large-card p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-family: 'Play', sans-serif;
+    font-optical-sizing: auto;
+}
+
+.learn-more {
+    padding: 10px 20px;
+    background-color: #D4AF37; /* Golden tan button */
+    color: #1C2833; /* Dark text on button */
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Play', sans-serif;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: #C4A484; /* Lighter tan */
+}
+
+/* Smaller Cards */
+.unique-cards-small {
+    flex: 1 1 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.small-card {
+    background-color: rgba(42, 54, 77, 0.569); /* Dark grayish-blue background */
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    text-align: center;
+    color: #C4A484; /* Lighter tan text */
+}
+
+.small-card:hover {
+    transform: translateY(-10px);
+}
+
+.small-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-family: 'Play', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.small-card p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-family: 'Play', sans-serif;
+}
+
+
+.future-explorations {
+    background: url('last.jpg') no-repeat center center/cover;
+    padding: 100px 0;
+    color: white;
+    text-align: center;
+}
+
+.explorations-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.exploration-heading h2 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #275474;
+    font-family: 'Play', sans-serif;
+    font-weight: 600; /* Yellow tint like stars */
+}
+
+.exploration-heading p {
+    font-size: 1.25rem;
+    margin-bottom: 50px;
+    color: #ddd;
+    font-family: 'Play', sans-serif;}
+
+.exploration-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.exploration-card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    width: 30%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.exploration-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+}
+
+.exploration-card h3 {
+    font-size: 1.5rem;
+    color: #b0b088;
+    margin-bottom: 15px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.exploration-card p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.exploration-card button {
+    background-color: #1f4f99;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.exploration-card button:hover {
+    background-color: #143575;
+}
+
+.footer img{
+    height: 40%;
+    width: 100%;
+}
+
+
+
+
+
+
+
+/* Media Queries for Responsiveness */
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .large-card {
+        flex: 1 1 100%;
+    }
+
+    .unique-cards-small {
+        flex: 1 1 100%;
+    }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .large-card {
+        flex: 1 1 100%;
+    }
+
+    .unique-cards-small {
+        flex: 1 1 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .small-card {
+        flex: 1 1 30%;
+    }
+}
+
+/* Desktops */
+@media (min-width: 1025px) {
+    .large-card {
+        flex: 1 1 60%;
+    }
+
+    .unique-cards-small {
+        flex: 1 1 35%;
+    }
+}
+
+
+
+
+
+
+
+
+/* Media Queries for Responsiveness */
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+    }
+    .large-card h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .cta-button {
+        font-size: 1.1rem;
+    }
+}
+
+/* Desktops */
+@media (min-width: 1025px) {
+    .article-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-button {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive CSS */
+@media (max-width: 1024px) {
+    .exploration-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .exploration-card {
+        width: 80%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .exploration-heading h2 {
+        font-size: 2.5rem;
+    }
+
+    .exploration-heading p {
+        font-size: 1rem;
+    }
+
+    .exploration-card h3 {
+        font-size: 1.75rem;
+    }
+
+    .exploration-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .exploration-heading h2 {
+        font-size: 2rem;
+    }
+
+    .exploration-heading p {
+        font-size: 0.9rem;
+    }
+
+    .exploration-card {
+        width: 90%;
+    }
+
+    .exploration-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .exploration-card p {
+        font-size: 0.9rem;
+    }
+
+    .exploration-card button {
+        padding: 8px 16px;
+    }
+}
