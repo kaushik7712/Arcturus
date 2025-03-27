@@ -484,6 +484,54 @@
           padding: 1.2rem;
           width: 100%;
         }
+
+        .container {
+          padding: 1rem;
+          width: 95%; /* Increased from default */
+        }
+
+        .book-page {
+          padding: 1.5rem;
+          width: 100%; /* Ensure full width */
+        }
+
+        .fact-cards {
+          width: 100%;
+          grid-template-columns: 1fr;
+        }
+
+        .fact-card {
+          width: 100%;
+          max-width: none; /* Remove max-width constraint */
+        }
+
+        .stat-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          margin: 1.5rem auto;
+          padding: 0;
+          width: 100%;
+          max-width: none; /* Remove the 280px constraint */
+        }
+
+        .stat-card {
+          padding: 1.2rem;
+          width: 100%;
+        }
+
+        .quote-container {
+          width: 100%;
+          padding: 2rem 1.5rem;
+        }
+
+        .speed-tracker {
+          width: 100%;
+        }
+
+        .highlight-box {
+          width: 100%;
+          margin: 1.5rem 0;
+        }
       }
 
       @media (max-width: 480px) {
@@ -501,6 +549,11 @@
 
         blockquote {
           font-size: 1rem;
+        }
+
+        .container {
+          width: 98%; /* Even wider for smaller screens */
+          padding: 0.8rem;
         }
       }
 
