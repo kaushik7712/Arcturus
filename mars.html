@@ -1,150 +1,417 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Cosmic Interface</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey to Mars | NASA</title>
     <style>
-      body {
-        margin: 0;
-        background: #000000;
-        font-family: "Space Mono", monospace;
-        color: #e0e0e0;
-      }
+        :root {
+            --primary-color: #FF4D4D;
+            --text-color: #F0F0F0;
+            --accent-color: #FF6B6B;
+            --bg-color: #1A0F0F;
+            --section-bg: rgba(255, 77, 77, 0.05);
+        }
 
-      .container {
-        max-width: 90%;
-        max-height: 100%;
-        margin: 0 auto;
-        padding: 20px;
-        background: rgba(5, 5, 8, 0.9);
-        border-radius: 10px;
-        box-shadow: 0 0 30px rgba(100, 100, 255, 0.1);
-        backdrop-filter: blur(10px);
-      }
-      .message {
-        height: 100vh;
-      }
+        body {
+            margin: 0;
+            background: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.7;
+            background-image: linear-gradient(to bottom, #1A0F0F, #2D1414);
+        }
 
-      h1 {
-        text-align: center;
-        font-size: 6vh;
-        color: #7a8bff;
-        font-family: "Orbitron", sans-serif;
-        text-shadow: 0 0 10px rgba(122, 139, 255, 0.5);
-        margin-bottom: 30px;
-      }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background: rgba(26, 15, 15, 0.95);
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(255, 77, 77, 0.1);
+        }
 
-      h2 {
-        text-align: justify;
-        color: #c1c5dc;
-        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-        margin-bottom: 10px;
-        font-size: 3vh;
-        font-weight: 300;
-      }
-
-      .footer img {
-        height: 40%;
-        width: 100%;
-      }
-
-      @media (max-width: 768px) {
         h1 {
-          font-size: 5vw;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            background: linear-gradient(120deg, #FF4D4D, #FF8080);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .content-section {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: var(--section-bg);
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
         }
 
         h2 {
-          font-size: 2.4vh;
-        }
-      }
-
-      @media (max-width: 480px) {
-        h1 {
-          font-size: 4vw;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
         }
 
-        h2 {
-          font-size: 2.3vh;
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
         }
-      }
+
+        .mission-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 77, 77, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-box {
+            background: rgba(255, 77, 77, 0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+                margin-bottom: 1.2rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .stat-card {
+                padding: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 1.6rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .stat-card div:not(.stat-number) {
+                font-size: 0.9rem;
+            }
+
+            .quote-box {
+                padding: 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .quote-box::before {
+                font-size: 3rem;
+            }
+
+            ul {
+                font-size: 0.95rem;
+                padding-left: 1.2rem;
+            }
+
+            li {
+                margin-bottom: 0.5rem;
+            }
+
+            .article-meta {
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+        }
     </style>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Space+Mono&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
     <div class="container">
-      <h1>Journey to Mars: Humanity’s Next Giant Leap</h1>
-      <h2>
-        <strong>10 February 2025, 12.12 AM</strong>
-        <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mars has long been the
-        focus of human fascination, symbolizing both mystery and the possibility
-        of a second home for humanity. As Earth faces increasing challenges from
-        climate change, resource depletion, and population growth, Mars presents
-        a unique opportunity for expansion beyond our planet. Unlike Europa,
-        which is primarily a target for robotic exploration, Mars is the most
-        viable candidate for human colonization due to its relatively Earth-like
-        conditions. With a day length similar to ours, an atmosphere (albeit
-        thin), and abundant natural resources such as water ice, carbon dioxide,
-        and minerals, Mars offers the foundation for self-sustaining human
-        settlements. NASA, SpaceX, and other space agencies have outlined
-        ambitious plans to send humans to Mars within the next two decades, with
-        SpaceX's Starship being a potential game-changer in interplanetary
-        travel. The vision is clear: establish a permanent presence on Mars by
-        first sending robotic missions, followed by cargo shipments carrying
-        essential supplies, and eventually, human crews to build the first
-        extraterrestrial colony. Unlike previous space missions, colonizing Mars
-        is not just about planting a flag and returning home—it’s about creating
-        a sustainable infrastructure that allows humanity to thrive on another
-        world. The first step involves terraforming, or modifying the Martian
-        environment to make it more hospitable. While full-scale terraforming is
-        still theoretical, initial efforts would focus on creating enclosed
-        habitats, utilizing local resources to generate oxygen, water, and food.
-        Scientists are already working on methods such as growing plants in
-        Martian soil, extracting water from underground ice, and using solar
-        power to generate electricity. One of the biggest challenges will be
-        radiation exposure, as Mars lacks a magnetic field to shield against
-        cosmic rays. Future settlements may be built underground or covered with
-        layers of Martian regolith to provide natural protection. Furthermore,
-        gravity on Mars is only 38% of Earth’s, which could have long-term
-        effects on human health, including muscle and bone loss. Despite these
-        challenges, scientists believe that technology and adaptation will
-        eventually allow humans to live and work on Mars permanently. The dream
-        of a Martian colony is not just a scientific endeavor but a necessity
-        for the survival of our species. As Elon Musk famously stated, "We must
-        become a multi-planetary species to ensure the long-term survival of
-        humanity." A self-sustaining colony on Mars would serve as a backup plan
-        in case of catastrophic events on Earth, such as nuclear war, asteroid
-        impacts, or extreme climate changes. Moreover, Mars could become a hub
-        for scientific research, technological innovation, and even new economic
-        opportunities, such as asteroid mining and space tourism. The first
-        Martian settlers will need to be highly trained astronauts, engineers,
-        and scientists capable of handling extreme isolation, psychological
-        stress, and the unknown dangers of a new world. However, as technology
-        advances, Mars could eventually become a destination for ordinary
-        people, much like how the Moon landings paved the way for commercial
-        space travel today. SpaceX’s vision includes sending a fleet of
-        Starships carrying hundreds of passengers per trip, reducing the cost of
-        travel through reusable rocket technology. If successful, Mars could see
-        its first permanent settlers within the next few decades, setting the
-        stage for an interplanetary society. Over time, humans may develop new
-        technologies to warm the Martian atmosphere, melt the ice caps, and
-        create artificial magnetic fields, gradually transforming Mars into a
-        world more like Earth. The cultural and philosophical impact of living
-        on another planet would be profound, reshaping our understanding of
-        identity, nationality, and human unity. A future where Mars has cities,
-        industries, and a growing population is no longer just science
-        fiction—it is an achievable goal within our lifetime. By overcoming the
-        enormous challenges of colonizing Mars, humanity will prove that no
-        frontier is too distant, no dream too ambitious. The Red Planet is not
-        just a destination; it is the future of human civilization, a stepping
-        stone to even greater exploration beyond our solar system.
-      </h2>
+        <h1>Journey to Mars: Humanity's Next Giant Leap</h1>
+        
+        <div class="article-meta">
+            <time datetime="2025-02-10">February 10, 2025, 12:12 AM</time>
+        </div>
 
-      <h2>Source: ChatGPT</h2>
+        <div class="mission-stats">
+            <div class="stat-card">
+                <div class="stat-number">6-8</div>
+                <div>Months Journey</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2030</div>
+                <div>First Human Landing</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">38%</                <div>Earth's Gravity</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>The Red Planet Vision</h2>
+            <p>Mars has long been the focus of human fascination, symbolizing both mystery and the possibility of a second home for humanity. As Earth faces increasing challenges from climate change, resource depletion, and population growth, Mars presents a unique opportunity for expansion beyond our planet.</p>
+        </div>
+
+        <div class="quote-box">
+            "We must become a multi-planetary species to ensure the long-term survival of humanity." - Elon Musk
+        </div>
+
+        <div class="content-section">
+            <h2>Mission Challenges</h2>
+            <p>The journey to Mars presents unprecedented challenges in space exploration. Astronauts will face extreme radiation exposure, psychological isolation, and limited resources during their 6-8 month journey through deep space. The mission requires revolutionary advances in propulsion, life support systems, and radiation shielding.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Habitat Development</h2>
+            <p>Creating sustainable habitats on Mars requires innovative solutions for protection against harsh radiation, extreme temperatures, and dust storms. The initial bases will utilize a combination of pre-fabricated modules and in-situ resource utilization (ISRU) to create livable spaces for the first human settlers.</p>
+        </div>
+
+        <div class="mission-stats">
+            <div class="stat-card">
+                <div class="stat-number">-63°C</div>
+                <div>Average Temperature</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24.6h</div>
+                <div>Length of Day</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">687</div>
+                <div>Earth Days Per Year</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Resource Utilization</h2>
+            <p>Mars offers various resources that can be used for sustaining human presence:</p>
+            <ul>
+                <li>Water ice deposits at the poles and underground</li>
+                <li>Carbon dioxide atmosphere for fuel and oxygen production</li>
+                <li>Regolith for construction and radiation shielding</li>
+                <li>Mineral deposits for manufacturing and energy production</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Technology Development</h2>
+            <p>Key technologies being developed for the Mars mission include:</p>
+            <ul>
+                <li>Advanced propulsion systems for faster transit</li>
+                <li>Closed-loop life support systems</li>
+                <li>3D printing facilities for spare parts</li>
+                <li>Agricultural systems for food production</li>
+                <li>Power generation using solar and nuclear sources</li>
+            </ul>
+        </div>
+
+        <div class="quote-box">
+            "Mars is the first step in humanity's journey to become an interplanetary civilization." - NASA Administrator
+        </div>
+
+        <div class="content-section">
+            <h2>Scientific Objectives</h2>
+            <p>The mission aims to answer fundamental questions about Mars:</p>
+            <ul>
+                <li>Evidence of past or present microbial life</li>
+                <li>Geological history and evolution</li>
+                <li>Climate patterns and atmospheric composition</li>
+                <li>Potential for future terraforming</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Timeline and Phases</h2>
+            <p>The Mars mission is planned in multiple phases:</p>
+            <ul>
+                <li>2024-2026: Cargo missions and infrastructure deployment</li>
+                <li>2027-2029: Habitat construction and resource verification</li>
+                <li>2030: First human landing and base establishment</li>
+                <li>2031-2035: Expansion and permanent settlement development</li>
+            </ul>
+        </div>
+
+        <div class="mission-stats">
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div>Initial Crew Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500</div>
+                <div>Days Surface Stay</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100</div>
+                <div>Tons of Cargo</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>The Journey to Mars</h2>
+            <p>The journey to Mars involves several critical phases:</p>
+            <ul>
+                <li>Launch Window Selection: Optimal alignment occurs every 26 months</li>
+                <li>Transit Phase: 6-8 months of deep space travel</li>
+                <li>Mars Orbit Insertion: Critical deceleration maneuver</li>
+                <li>Landing Operations: EDL (Entry, Descent, and Landing)</li>
+            </ul>
+        </div>
+
+        <div class="mission-stats">
+            <div class="stat-card">
+                <div class="stat-number">225M</div>
+                <div>KM Average Distance</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7.5</div>
+                <div>KM/s Entry Speed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">26</div>
+                <div>Months Between Windows</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Scientific Instruments and Data Collection</h2>
+            <p>Advanced equipment for comprehensive Mars exploration:</p>
+            <ul>
+                <li>Spectral Analyzers for atmospheric composition</li>
+                <li>Ground-Penetrating Radar for subsurface mapping</li>
+                <li>Weather Monitoring Stations</li>
+                <li>Seismic Activity Sensors</li>
+                <li>Sample Collection and Analysis Labs</li>
+                <li>High-Resolution Imaging Systems</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Expected Outcomes and Scientific Impact</h2>
+            <p>The mission aims to achieve groundbreaking results:</p>
+            <ul>
+                <li>First definitive evidence of past or present life</li>
+                <li>Complete geological and climate history</li>
+                <li>Resource mapping for future colonization</li>
+                <li>Technology demonstrations for sustained presence</li>
+                <li>Understanding of long-term space habitation</li>
+            </ul>
+        </div>
+
+        <div class="quote-box">
+            "The first human footprints on Mars will mark the beginning of a new era in human history." - Space Science Institute
+        </div>
+
+        <div class="content-section">
+            <h2>Mission Importance</h2>
+            <p>The Mars mission represents several crucial aspects:</p>
+            <ul>
+                <li>Technological advancement and innovation</li>
+                <li>International cooperation and collaboration</li>
+                <li>Scientific understanding of planetary formation</li>
+                <li>Potential solutions for Earth's challenges</li>
+                <li>Inspiration for future generations</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Challenges and Future Prospects</h2>
+            <p>Key challenges and solutions being developed:</p>
+            <ul>
+                <li>Radiation Protection: Advanced shielding materials</li>
+                <li>Psychological Support: AI companions and Earth communication</li>
+                <li>Medical Care: Autonomous medical systems</li>
+                <li>Food Production: Sustainable farming techniques</li>
+                <li>Equipment Maintenance: 3D printing and repairs</li>
+            </ul>
+        </div>
+
+        <div class="mission-stats">
+            <div class="stat-card">
+                <div class="stat-number">95%</                <div>CO₂ Atmosphere</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">300</div>
+                <div>Days of Dust Storms</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2.5x</div>
+                <div>Radiation vs Earth</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Long-Term Vision</h2>
+            <p>Future developments and goals:</p>
+            <ul>
+                <li>Establishment of permanent Mars colonies</li>
+                <li>Development of Mars-based industries</li>
+                <li>Potential terraforming initiatives</li>
+                <li>Regular Earth-Mars transport system</li>
+                <li>Self-sustaining Martian civilization</li>
+            </ul>
+        </div>
+
+        <div class="quote-box">
+            "Mars is not just a destination, it's the beginning of humanity's greatest journey." - Mars Mission Director
+        </div>
     </div>
-    <section class="footer">
-      <img src="footer.jpg" alt="" />
-    </section>
-  </body>
+</body>
 </html>

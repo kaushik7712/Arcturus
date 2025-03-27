@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voyager Beyond</title>
-    <link rel="stylesheet" href="article.css" />
+    <link rel="stylesheet" href="articl.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,86 +12,780 @@
       href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      :root {
+        --primary-color: #6B2FA3;
+        --accent-color: #FFD700;
+        --text-color: #E5E1E6;
+        --bg-color: #130B1E;
+        --gradient-start: rgba(19, 11, 30, 0.7);  /* Matches bg-color */
+        --gradient-end: rgba(107, 47, 163, 0.1);  /* Subtle purple tint */
+        --card-bg: rgba(19, 11, 30, 0.6);        /* Transparent bg-color */
+      }
+
+      body {
+        background: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Space Grotesk", sans-serif;
+        line-height: 1.8;
+      }
+
+      .article-meta {
+        text-align: center;
+        color: var(--accent-color);
+        font-family: "Space Mono", monospace;
+        margin: 2rem 0;
+        font-size: 0.8rem; /* Base size for mobile */
+      }
+
+      .article-meta time {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem; /* Larger size for date */
+      }
+
+      .article-meta .author {
+        font-size: 0.7rem;
+      }
+
+      @media (min-width: 768px) {
+        .article-meta {
+          font-size: 1.1rem;
+        }
+
+        .article-meta time {
+          font-size: 1.1rem;
+        }
+
+        .article-meta .author {
+          font-size: 1rem;
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .book-page {
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 215, 0, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transform: translateZ(0);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        padding: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .book-page:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(76, 201, 240, 0.15);
+      }
+
+      .highlight-box {
+        background: rgba(19, 11, 30, 0.4);
+        padding: 2rem;
+        border-left: 4px solid rgba(255, 215, 0, 0.3);
+        margin: 2rem 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 2rem 0;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .stat-card {
+        background: rgba(19, 11, 30, 0.5);
+        padding: 1.5rem;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid rgba(255, 215, 0, 0.08);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        animation: countUp 2s ease-out forwards;
+        background: linear-gradient(120deg, #FFD700, #6B2FA3);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      @keyframes countUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-family: "Orbitron", sans-serif;
+        color: var(--accent-color);
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+        letter-spacing: 1px;
+      }
+
+      .timeline {
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      .timeline-item {
+        margin-bottom: 2rem;
+        padding-left: 3rem;
+        border-left: 2px solid rgba(255, 215, 0, 0.2);
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        opacity: 0.8;
+      }
+
+      .footer {
+        background: linear-gradient(
+          to bottom,
+          rgba(107, 47, 163, 0.1),
+          var(--bg-color)
+        );
+        padding: 3rem 0;
+        text-align: center;
+        position: relative;
+      }
+
+      .footer p {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+      }
+
+      .fact-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .fact-card {
+        background: rgba(19, 11, 30, 0.5);
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(255, 215, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .fact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at top right,
+          rgba(76, 201, 240, 0.1),
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .fact-card:hover::before {
+        opacity: 1;
+      }
+
+      .fact-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .fact-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .fact-card h4 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .quote-container {
+        background: rgba(19, 11, 30, 0.5);
+        padding: 4rem 2rem;
+        text-align: center;
+        border-radius: 20px;
+        margin: 3rem 0;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 215, 0, 0.08);
+      }
+
+      .quote-container::before {
+        content: '"';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 8rem;
+        color: rgba(76, 201, 240, 0.1);
+        font-family: "Georgia", serif;
+      }
+
+      blockquote {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: var(--accent-color);
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      blockquote cite {
+        display: block;
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: var(--text-color);
+      }
+
+      .speed-tracker {
+        background: rgba(19, 11, 30, 0.5);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin: 2rem 0;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 215, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .speed-tracker::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at bottom right,
+          rgba(76, 201, 240, 0.1),
+          transparent 70%
+        );
+      }
+
+      .speed-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .speed-number {
+        font-size: 2.5rem;
+        color: var (--accent-color);
+        font-weight: bold;
+      }
+
+      .speed-unit {
+        font-size: 1.2rem;
+        color: var(--text-color);
+        margin-left: 0.5rem;
+      }
+
+      /* .container1 {
+            background: linear-gradient(180deg, var(--bg-color) 0%, rgba(11, 60, 145, 0) 100%);
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(76, 201, 240, 0.1);
+        }
+
+      .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(76, 201, 240, 0.3));
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        } */
+
+      @media (max-width: 768px) {
+        .fact-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .speed-stats {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        blockquote {
+          font-size: 1.2rem;
+          padding: 0 1rem;
+        }
+
+        .book-page {
+          padding: 2rem;
+        }
+
+        .quote-container {
+          padding: 3rem 1.5rem;
+        }
+
+        .quote-container::before {
+          font-size: 6rem;
+        }
+
+        .timeline-item {
+          padding-left: 2rem;
+        }
+
+        .logo {
+          max-width: 150px;
+        }
+
+        .footer {
+          padding: 2rem 0;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+          margin-bottom: 1.5rem;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+          margin-bottom: 0.8rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+
+        .book-page p {
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+
+        .stat-number {
+          font-size: 1.8rem;
+        }
+
+        .stat-card div:not(.stat-number) {
+          font-size: 0.8rem;
+        }
+
+        .highlight-box {
+          padding: 1.5rem;
+        }
+
+        .highlight-box h3 {
+          font-size: 1.1rem;
+        }
+
+        .highlight-box ul li {
+          font-size: 0.85rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .speed-number {
+          font-size: 1.8rem;
+        }
+
+        .speed-unit {
+          font-size: 0.9rem;
+        }
+
+        .speed-stats p {
+          font-size: 0.85rem;
+        }
+
+        .fact-card h4 {
+          font-size: 1.1rem;
+        }
+
+        .fact-card p {
+          font-size: 0.85rem;
+        }
+
+        .fact-icon {
+          font-size: 2rem;
+        }
+
+        .timeline-item h3 {
+          font-size: 1.1rem;
+        }
+
+        .timeline-item p {
+          font-size: 0.85rem;
+        }
+
+        blockquote {
+          font-size: 1.1rem;
+        }
+
+        blockquote cite {
+          font-size: 0.85rem;
+        }
+
+        .footer p {
+          font-size: 0.8rem;
+        }
+
+        .stat-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          margin: 1.5rem auto; /* Changed from margin: 1.5rem 0 */
+          padding: 0;
+          width: 100%;
+          max-width: 280px; /* Added max-width to contain cards */
+        }
+
+        .stat-card {
+          padding: 1.2rem;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.6rem;
+        }
+
+        .stat-number {
+          font-size: 1.6rem;
+        }
+
+        .speed-number {
+          font-size: 1.6rem;
+        }
+
+        blockquote {
+          font-size: 1rem;
+        }
+      }
+
+      .article-section {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(76, 201, 240, 0.1);
+      }
+
+      .article-section:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .article-section h2 {
+        color: var(--accent-color);
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .mission-highlight {
+        background: rgba(19, 11, 30, 0.4);
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin: 1.5rem 0;
+        border-left: 3px solid rgba(255, 215, 0, 0.3);
+      }
+
+      .mission-highlight h3 {
+        color: var(--accent-color);
+        margin-bottom: 0.8rem;
+        font-size: 1.2rem;
+      }
+
+      .discovery-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .discovery-list li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .discovery-list li::before {
+        content: "•";
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+      }
+
+      .article-meta {
+        font-size: 0.7rem;
+      }
+
+      @media (max-width: 768px) {
+        .article-section h2 {
+          font-size: 1.4rem;
+        }
+
+        .article-section {
+          margin-bottom: 2rem;
+          padding-bottom: 1.5rem;
+        }
+
+        .mission-highlight {
+          padding: 1.2rem;
+        }
+
+        .mission-highlight h3 {
+          font-size: 1.1rem;
+        }
+
+        .discovery-list li {
+          font-size: 0.9rem;
+          padding-left: 1.2rem;
+        }
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.15) 1px, transparent 1px),
+            radial-gradient(circle at 80% 40%, rgba(255, 215, 0, 0.15) 1px, transparent 1px),
+            radial-gradient(circle at 40% 70%, rgba(255, 215, 0, 0.15) 1px, transparent 1px);
+        background-size: 150px 150px;  /* Increased star spacing */
+        z-index: -1;
+        pointer-events: none;
+      }
+    </style>
   </head>
   <body>
-    <div class="container1">
+    <!--<div class="container1">
     <div class="logo-container">
-        <img src="logo1.png" alt="Logo" class="logo" />
+        <img src="logo1.png" alt="Logo" class="logo" width="700" height="600" />
       </div>
-    </div>
+    </div>-->
 
+    <div class="article-meta">
+      <time>Last Updated: March 27, 2025</time>
+      <span class="author">By Space Research Division</span>
+    </div>
 
     <div class="container">
       <div class="book-page">
         <h1>Voyager Beyond</h1>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Launched in 1977, NASA's Voyager program has been a monumental chapter
-          in the history of space exploration. The twin spacecraft, Voyager 1
-          and Voyager 2, were designed to study the outer planets of our solar
-          system. However, their missions have evolved dramatically, pushing the
-          boundaries of human understanding and exploration into interstellar
-          space. As these probes continue to send back data from beyond the
-          influence of our sun, they provide invaluable insights into the nature
-          of the universe and our place within it. Voyager 1 and Voyager 2 were
-          launched within weeks of each other in 1977, with Voyager 2 departing
-          first on August 20 and Voyager 1 following on September 5. The initial
-          mission objective was to explore Jupiter and Saturn, their moons, and
-          their ring systems. The two spacecraft utilized a unique gravitational
-          assist technique, slingshotting around planets to gain speed and alter
-          their trajectories, allowing them to visit multiple planets on their
-          respective journeys. Voyager 1 made its closest approach to Jupiter in
-          March 1979, capturing stunning images and data that revealed the
-          planet's complex atmosphere and extensive moon system. Voyager 2,
-          which had a longer trajectory, flew by Jupiter in July 1979 and Saturn
-          in August 1981 before continuing on to Uranus in January 1986 and
-          Neptune in August 1989. Each encounter yielded groundbreaking
-          discoveries, including insights into the atmospheres, magnetic fields,
-          and geological features of these distant worlds. Voyager's Golden
-          Record, a time capsule intended for any extraterrestrial life, carries
-          sounds and images depicting life and culture on Earth. As we look to
-          the stars, Voyager serves as a testament to human curiosity and the
-          quest for knowledge about the universe beyond our own.
-        </p>
+
+        <!-- Introduction Section -->
+        <div class="article-section">
+          <h2>The Beginning of an Epic Journey</h2>
+          <p>
+            Launched in 1977, NASA's Voyager program has been a monumental
+            chapter in the history of space exploration. The twin spacecraft,
+            Voyager 1 and Voyager 2, were designed to study the outer planets of
+            our solar system. However, their missions have evolved dramatically,
+            pushing the boundaries of human understanding and exploration into
+            interstellar space.
+          </p>
+        </div>
+
+        <!-- Launch Details -->
+        <div class="article-section">
+          <h2>The Launch</h2>
+          <p>
+            Voyager 1 and Voyager 2 were launched within weeks of each other in
+            1977, with Voyager 2 departing first on August 20 and Voyager 1
+            following on September 5. The initial mission objective was to
+            explore Jupiter and Saturn, their moons, and their ring systems.
+          </p>
+
+          <div class="mission-highlight">
+            <h3>Gravitational Assist Technique</h3>
+            <p>
+              The two spacecraft utilized a unique gravitational assist
+              technique, slingshotting around planets to gain speed and alter
+              their trajectories.
+            </p>
+          </div>
+        </div>
+
+        <!-- Planetary Encounters -->
+        <div class="article-section">
+          <h2>Planetary Discoveries</h2>
+          <ul class="discovery-list">
+            <li>
+              <strong>Jupiter (1979):</strong> Captured stunning images
+              revealing complex atmosphere and extensive moon system
+            </li>
+            <li>
+              <strong>Saturn (1981):</strong> Detailed studies of ring
+              structures and atmospheric patterns
+            </li>
+            <li>
+              <strong>Uranus & Neptune:</strong> First-ever close-up
+              observations and groundbreaking discoveries
+            </li>
+          </ul>
+        </div>
       </div>
-   
+
+      <div class="fact-cards">
+        <div class="fact-card">
+          <span class="fact-icon">🚀</span>
+          <h4>Did You Know?</h4>
+          <p>
+            The Voyager's computer has only 69.63 kilobytes of memory, about
+            240,000 times less than a modern smartphone!
+          </p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon">💿</span>
+          <h4>Golden Record</h4>
+          <p>
+            Each Voyager carries a gold-plated record containing sounds and
+            images of Earth, including greetings in 55 languages.
+          </p>
+        </div>
+      </div>
+
       <div class="book-page">
         <h1>Voyager's Journey into Interstellar Space</h1>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          After completing their primary missions, both Voyager spacecraft
-          entered a phase known as the Voyager Interstellar Mission. This stage
-          of exploration began as Voyager 1 crossed the heliopause—the boundary
-          between the solar wind and the interstellar medium—on August 25, 2012.
-          Voyager 2 followed suit, crossing this critical boundary on November
-          5, 2018. The heliopause represents the outer limits of the Sun's
-          influence, where the solar wind is no longer strong enough to push
-          back against the interstellar medium, allowing the spacecraft to enter
-          true interstellar space. These milestones marked humanity's first
-          forays beyond the protective bubble of our solar system. The Voyager
-          probes now travel through a realm of space where the environment is
-          vastly different from that of our solar system. The data sent back by
-          Voyager 1 and 2 from this uncharted territory has reshaped our
-          understanding of cosmic phenomena and the characteristics of
-          interstellar space. The scientific discoveries made by the Voyager
-          spacecraft have been numerous and varied. One of the most significant
-          findings has been the detection of cosmic rays, which are high-energy
-          particles originating from outside our solar system. These
-          measurements help scientists understand the composition of the
-          interstellar medium and the processes occurring in the broader galaxy.
-          Voyager 1 has also reported observations of a decrease in the
-          intensity of solar particles as it travels further into interstellar
-          space. This change provides critical information about the interaction
-          between solar wind and the interstellar medium, enhancing our
-          understanding of the heliosphere's structure. Moreover, Voyager 2 has
-          provided valuable data on the magnetic field and plasma waves in
-          interstellar space. These measurements contribute to our understanding
-          of how stars and their surrounding environments interact, revealing
-          insights into stellar life cycles and the dynamics of the galaxy
-        </p>
+
+        <!-- Heliopause Crossing Section -->
+        <div class="article-section">
+          <h2>Crossing the Final Frontier</h2>
+          <p>
+            After completing their primary missions, both Voyager spacecraft
+            entered a phase known as the Voyager Interstellar Mission. This
+            stage of exploration began as Voyager 1 crossed the heliopause—the
+            boundary between the solar wind and the interstellar medium—on
+            August 25, 2012.
+          </p>
+
+          <div class="mission-highlight">
+            <h3>Historic Achievement</h3>
+            <p>
+              Voyager 2 followed suit, crossing this critical boundary on
+              November 5, 2018, marking humanity's second venture into
+              interstellar space.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interstellar Environment -->
+        <div class="article-section">
+          <h2>Beyond Our Solar Bubble</h2>
+          <p>
+            The heliopause represents the outer limits of the Sun's influence,
+            where the solar wind is no longer strong enough to push back against
+            the interstellar medium. The Voyager probes now travel through a
+            realm of space where the environment is vastly different from that
+            of our solar system.
+          </p>
+
+          <div class="mission-highlight">
+            <h3>Current Environment</h3>
+            <ul class="discovery-list">
+              <li>Decreased solar particle intensity</li>
+              <li>Different magnetic field characteristics</li>
+              <li>Unique plasma wave patterns</li>
+              <li>Higher cosmic ray concentrations</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Scientific Discoveries -->
+        <div class="article-section">
+          <h2>Groundbreaking Discoveries</h2>
+          <p>
+            The scientific discoveries made by the Voyager spacecraft have been
+            numerous and varied. One of the most significant findings has been
+            the detection of cosmic rays, which are high-energy particles
+            originating from outside our solar system.
+          </p>
+
+          <div class="highlight-box">
+            <h3>Key Findings</h3>
+            <ul>
+              <li>Measurement of interstellar medium composition</li>
+              <li>Detection of plasma waves in unexplored space</li>
+              <li>Mapping of magnetic fields beyond heliopause</li>
+              <li>Documentation of solar wind interaction boundaries</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Data Analysis -->
+        <div class="article-section">
+          <h2>Ongoing Research</h2>
+          <p>
+            Voyager 1 has reported observations of a decrease in the intensity
+            of solar particles as it travels further into interstellar space.
+            This change provides critical information about the interaction
+            between solar wind and the interstellar medium, enhancing our
+            understanding of the heliosphere's structure.
+          </p>
+
+          <p>
+            Moreover, Voyager 2 has provided valuable data on the magnetic field
+            and plasma waves in interstellar space. These measurements
+            contribute to our understanding of how stars and their surrounding
+            environments interact, revealing insights into stellar life cycles
+            and the dynamics of the galaxy.
+          </p>
+        </div>
       </div>
- 
+
+      <div class="quote-container">
+        <blockquote>
+          "The Voyagers are destined—perhaps eternally—to wander the Milky Way."
+          <cite>- Edward Stone, Voyager Project Scientist</cite>
+        </blockquote>
+      </div>
+
       <div class="book-page">
         <h1>Future of the Voyager Missions</h1>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p>
           As of now, both Voyager spacecraft are well beyond the reach of direct
           control, with each probe operating on limited power from its
           radioisotope thermoelectric generators (RTGs). The power output of
@@ -108,10 +802,102 @@
           inspiring future generations of explorers.
         </p>
       </div>
-    </div>
-    <section class="footer">
-      <img src="footer.jpg" alt="">
-    </section>
 
+      <div class="speed-tracker">
+        <h3>Live Speed Tracker</h3>
+        <div class="speed-stats">
+          <div>
+            <span class="speed-number">17.0</span>
+            <span class="speed-unit">km/s</span>
+            <p>Voyager 1 Speed</p>
+          </div>
+          <div>
+            <span class="speed-number">15.8</span>
+            <span class="speed-unit">km/s</span>
+            <p>Voyager 2 Speed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-page">
+        <h1>Technical Specifications and Achievements</h1>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-number">23.3B</div>
+            <div>KM from Earth</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">45</div>
+            <div>Years Active</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">11</div>
+            <div>Scientific Instruments</div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h3>Key Discoveries</h3>
+          <ul>
+            <li>Jupiter's complex atmospheric dynamics</li>
+            <li>Saturn's ring structure details</li>
+            <li>First measurements of interstellar medium</li>
+            <li>Detection of the heliosphere boundary</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="book-page">
+        <h1>Mission Timeline</h1>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>1977</h3>
+            <p>Launch of Voyager 1 and 2</p>
+          </div>
+          <div class="timeline-item">
+            <h3>1979</h3>
+            <p>Jupiter flyby observations</p>
+          </div>
+          <div class="timeline-item">
+            <h3>2012</h3>
+            <p>Voyager 1 enters interstellar space</p>
+          </div>
+          <div class="timeline-item">
+            <h3>2018</h3>
+            <p>Voyager 2 crosses heliopause</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-page">
+        <h1>Scientific Legacy</h1>
+        <p>
+          The Voyager space probes, launched in 1977, have profoundly impacted
+          science by extending our knowledge beyond the outer planets into
+          interstellar space. They provided unprecedented data on Jupiter,
+          Saturn, Uranus, and Neptune, revealing details about their
+          atmospheres, moons, and rings. As the first human-made objects to exit
+          the heliosphere, Voyager 1 and 2 have measured interstellar magnetic
+          fields, particles, and plasma, offering insights into the space beyond
+          our solar system. Their ongoing mission, still active as of March
+          2025, continues to contribute valuable data, enhancing our
+          understanding of the cosmos and inspiring future exploration..
+        </p>
+
+        <div class="highlight-box">
+          <h3>Ongoing Research</h3>
+          <p>Current studies using Voyager data include:</p>
+          <ul>
+            <li>Interstellar medium composition analysis</li>
+            <li>Cosmic ray intensity measurements</li>
+            <li>Magnetic field mapping</li>
+            <li>Plasma wave observations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>© 2025 Space Research Division. All rights reserved.</p>
+    </footer>
   </body>
 </html>
