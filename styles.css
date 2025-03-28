@@ -743,3 +743,33 @@ h1 {
         font-size: 0.75rem;
     }
 }
+
+@media (max-width: 480px) {
+    .large-card h2 {
+        font-size: 1.6rem; /* Reduced from 1.8rem */
+    }
+
+    .stat-number {
+        font-size: 1.2rem; /* Reduced from 1.4rem */
+    }
+
+    .learn-more {
+        font-size: 0.7rem; /* Reduced from 0.75rem */
+    }
+
+    .exploration-heading h2 {
+        font-size: 1.8rem; /* Reduced from 2rem */
+    }
+
+    .exploration-heading p {
+        font-size: 0.8rem; /* Reduced from 0.9rem */
+    }
+
+    .exploration-card h3 {
+        font-size: 1.3rem; /* Reduced from 1.5rem */
+    }
+
+    .exploration-card p {
+        font-size: 0.8rem; /* Reduced from 0.9rem */
+    }
+}

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Under Construction | Cosmic Development</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cosmic-blue: #0b3d91;
+            --nebula-purple: #6a00f4;
+            --star-yellow: #fcba03;
+            --space-black: #0a0e17;
+            --astronaut-white: #e6f1ff;
+            --mars-red: #e83f3f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--space-black);
+            color: var(--astronaut-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Space Background Elements */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 80% 70%, white, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 40% 50%, white, rgba(0,0,0,0));
+            background-size: 200px 200px;
+            animation: twinkle 5s infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+        
+        .planet {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--nebula-purple), var(--cosmic-blue));
+            right: -50px;
+            bottom: -50px;
+            filter: blur(1px);
+            opacity: 0.7;
+        }
+        
+        /* Content Container */
+        .dev-notice {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(11, 61, 145, 0.2);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(106, 0, 244, 0.3);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(230, 241, 255, 0.1);
+        }
+        
+        .dev-notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--nebula-purple), var(--star-yellow));
+            border-radius: 5px 5px 0 0;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--star-yellow);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(252, 186, 3, 0.5);
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            color: var(--astronaut-white);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Space Station Animation */
+        .space-station {
+            width: 120px;
+            height: 60px;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .station-core {
+            width: 80px;
+            height: 40px;
+            background: linear-gradient(90deg, #3a3a3a, #5a5a5a);
+            border-radius: 20px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 0 0 15px rgba(252, 186, 3, 0.3);
+        }
+        
+        .station-ring {
+            width: 100px;
+            height: 100px;
+            border: 5px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            animation: spin 20s linear infinite;
+        }
+        
+        .station-dish {
+            width: 20px;
+            height: 15px;
+            background: #4a4a4a;
+            border-radius: 10px 10px 0 0;
+            position: absolute;
+            right: -5px;
+            top: 12px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--nebula-purple), var(--cosmic-blue));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            margin: 0 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(106, 0, 244, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 0, 244, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--star-yellow);
+            border: 2px solid var(--star-yellow);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(252, 186, 3, 0.1);
+        }
+        
+        .contact {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--astronaut-white);
+            opacity: 0.7;
+        }
+        
+        .contact a {
+            color: var(--star-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            .dev-notice {
+                padding: 2rem 1.5rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 0.5rem auto;
+                width: 80%;
+            }
+            
+            h1 {
+                font-size: 1.5rem; /* Reduced font size */
+            }
+            
+            p {
+                font-size: 0.9rem; /* Reduced font size */
+            }
+            
+            .contact {
+                font-size: 0.8rem; /* Reduced font size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="planet"></div>
+    
+    <div class="dev-notice">
+        <div class="space-station">
+            <div class="station-ring"></div>
+            <div class="station-core">
+                <div class="station-dish"></div>
+            </div>
+        </div>
+        
+        <h1>Under Cosmic Construction</h1>
+        <p>Our team of space engineers is currently building this section of our website. While we complete our orbital deployment, please enjoy the rest of our site.</p>
+        
+        <div>
+            <a href="/" class="btn">Return to Command Center</a>
+            <a href="contact.html" class="btn btn-outline">Contact Mission Control</a>
+        </div>
+        
+        <p class="contact">For immediate assistance, <a href="mailto:support@example.com">transmit a message</a> to our crew.</p>
+    </div>
+
+    <script>
+        // Create additional twinkling stars
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.createElement('div');
+            starsContainer.className = 'stars-container';
+            document.body.appendChild(starsContainer);
+            
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.style.position = 'absolute';
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.backgroundColor = 'white';
+                star.style.borderRadius = '50%';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.opacity = Math.random() * 0.5 + 0.3;
+                star.style.animation = `twinkle ${Math.random() * 5 + 3}s infinite alternate`;
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
+</body>
+</html>
