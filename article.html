@@ -3,910 +3,567 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Voyager Beyond</title>
-    <link rel="stylesheet" href="articl.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Voyager Beyond: Cosmic Frontiers</title>
     <style>
-      :root {
-        --primary-color: #6B2FA3;
-        --accent-color: #FFD700;
-        --text-color: #E5E1E6;
-        --bg-color: #130B1E;
-        --gradient-start: rgba(19, 11, 30, 0.7);  /* Matches bg-color */
-        --gradient-end: rgba(107, 47, 163, 0.1);  /* Subtle purple tint */
-        --card-bg: rgba(19, 11, 30, 0.6);        /* Transparent bg-color */
-      }
-
+      /* Base Styles */
       body {
-        background: var(--bg-color);
-        color: var(--text-color);
-        font-family: "Space Grotesk", sans-serif;
-        line-height: 1.8;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #0a0a1a;
+        margin: 0;
+        padding: 0;
+        background-image: radial-gradient(
+            circle at 10% 20%,
+            rgba(41, 5, 94, 0.8) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(94, 5, 55, 0.6) 0%,
+            transparent 20%
+          );
       }
 
-      .article-meta {
+      /* Cosmic Header */
+      .cosmic-header {
         text-align: center;
-        color: var(--accent-color);
-        font-family: "Space Mono", monospace;
-        margin: 2rem 0;
-        font-size: 0.8rem; /* Base size for mobile */
+        padding: 4rem 2rem;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #000428, #004e92);
       }
 
-      .article-meta time {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-size: 0.8rem; /* Larger size for date */
+      .cosmic-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.8"/><circle cx="50" cy="30" r="1" fill="white" opacity="0.6"/><circle cx="70" cy="60" r="1.5" fill="white" opacity="0.9"/><circle cx="10" cy="80" r="1" fill="white" opacity="0.7"/><circle cx="40" cy="90" r="1" fill="white" opacity="0.5"/><circle cx="90" cy="10" r="1" fill="white" opacity="0.4"/></svg>');
+        opacity: 0.6;
       }
 
-      .article-meta .author {
-        font-size: 0.7rem;
+      .cosmic-header h1 {
+        font-size: 4rem;
+        margin: 0;
+        background: linear-gradient(to right, #ff8a00, #da1b60, #8a2be2);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        position: relative;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        font-family: "Orbitron", sans-serif;
+        letter-spacing: 2px;
       }
 
-      @media (min-width: 768px) {
-        .article-meta {
-          font-size: 1.1rem;
-        }
-
-        .article-meta time {
-          font-size: 1.1rem;
-        }
-
-        .article-meta .author {
-          font-size: 1rem;
-        }
+      .cosmic-header p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 1rem auto 0;
+        color: #b8c2cc;
+        position: relative;
       }
 
+      /* Main Content */
       .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
       }
 
-      .book-page {
-        background: var(--card-bg);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 215, 0, 0.08);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        transform: translateZ(0);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        padding: 3rem;
-        margin-bottom: 3rem;
-      }
-
-      .book-page:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 40px rgba(76, 201, 240, 0.15);
-      }
-
-      .highlight-box {
-        background: rgba(19, 11, 30, 0.4);
-        border-left: 4px solid rgba(255, 215, 0, 0.3);
+      /* Article Cards */
+      .article-card {
+        background: rgba(15, 15, 35, 0.8);
+        border-radius: 15px;
         padding: 2rem;
-        margin: 2rem 0;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      }
-
-      .stat-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin: 2rem 0;
-        width: 100%;
+        margin-bottom: 3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
         overflow: hidden;
       }
 
-      .stat-card {
-        background: rgba(19, 11, 30, 0.5);
-        border: 1px solid rgba(255, 215, 0, 0.08);
-        padding: 1.5rem;
-        border-radius: 15px;
-        text-align: center;
+      .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
       }
 
-      .stat-number {
-        font-size: 2.5rem;
-        color: var(--accent-color);
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        animation: countUp 2s ease-out forwards;
-        background: linear-gradient(120deg, #FFD700, #6B2FA3);
+      .article-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(to right, #ff8a00, #da1b60, #8a2be2);
+      }
+
+      .article-card h2 {
+        color: #f0f4f8;
+        font-size: 2.2rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .article-card p {
+        color: #a0aec0;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Specialized Card Styles */
+      .card-nebula {
+        background: linear-gradient(
+            135deg,
+            rgba(20, 0, 36, 0.95) 0%,
+            rgba(41, 5, 94, 0.95) 100%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(138, 43, 226, 0.1) 0%,
+            transparent 70%
+          );
+        border: 1px solid rgba(138, 43, 226, 0.15);
+      }
+
+      .card-nebula::before {
+        background: linear-gradient(to right, #2d1155, #4a0e77);
+      }
+
+      .card-nebula .highlight {
+        background: linear-gradient(120deg, #9d4edd, #5a189a);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
 
-      @keyframes countUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .card-nebula .quote {
+        border-left: 3px solid #9d4edd;
+        color: #b8c2cc;
       }
 
-      h1 {
-        font-family: "Orbitron", sans-serif;
-        color: var(--accent-color);
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        text-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
-        letter-spacing: 1px;
+      .card-blackhole {
+        background: radial-gradient(
+            circle at center,
+            rgba(15, 15, 35, 0.9) 40%,
+            rgba(0, 0, 0, 0.8)
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(218, 27, 96, 0.2)" stroke-width="2"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255, 138, 0, 0.2)" stroke-width="2"/><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(138, 43, 226, 0.2)" stroke-width="2"/></svg>');
       }
 
-      .timeline {
-        position: relative;
-        padding: 2rem 0;
+      .card-exoplanet {
+        background: linear-gradient(
+            135deg,
+            rgba(0, 20, 20, 0.95) 0%,
+            rgba(0, 36, 36, 0.95) 100%
+          ),
+          radial-gradient(
+            circle at 70% 30%,
+            rgba(0, 255, 255, 0.05) 0%,
+            transparent 70%
+          );
+        border: 1px solid rgba(0, 255, 255, 0.15);
       }
 
-      .timeline-item {
-        margin-bottom: 2rem;
-        padding-left: 3rem;
-        border-left: 2px solid var(--accent-color);
-        position: relative;
+      .card-exoplanet::before {
+        background: linear-gradient(to right, #003333, #006666);
       }
 
-      .timeline-item::before {
-        content: "";
+      .card-exoplanet .highlight {
+        background: linear-gradient(120deg, #00ffff, #008b8b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .card-exoplanet .quote {
+        border-left: 3px solid #00ced1;
+        color: #b8c2cc;
+      }
+
+      /* Floating Elements */
+      .floating-planet {
         position: absolute;
-        left: -6px;
-        top: 0;
-        width: 16px;
-        height: 16px;
-        background: var(--accent-color);
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
-        box-shadow: 0 0 20px var(--accent-color);
+        background: radial-gradient(circle at 30% 30%, #8a2be2, #4b0082);
+        box-shadow: 0 0 30px #8a2be2;
+        right: 10%;
+        top: 150px;
+        z-index: 1;
+        animation: float 8s ease-in-out infinite;
       }
 
-      .footer {
+      .floating-comet {
+        position: absolute;
+        width: 150px;
+        height: 3px;
         background: linear-gradient(
-          to bottom,
-          rgba(107, 47, 163, 0.1),
-          var(--bg-color)
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.8)
         );
-        padding: 3rem 0;
-        text-align: center;
-        position: relative;
+        left: -10%;
+        top: 300px;
+        transform: rotate(-20deg);
+        z-index: 1;
+        animation: comet 25s linear infinite;
       }
 
-      .footer p {
-        color: var(--accent-color);
-        font-size: 0.9rem;
-        margin-bottom: 2rem;
-      }
-
-      .fact-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin: 2rem 0;
-      }
-
-      .fact-card {
-        background: rgba(19, 11, 30, 0.5);
-        border: 1px solid rgba(255, 215, 0, 0.08);
-        border-radius: 15px;
-        padding: 1.5rem;
-        text-align: center;
-        transition: transform 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      .fact-card::before {
+      .floating-comet::after {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          circle at top right,
-          rgba(76, 201, 240, 0.1),
-          transparent 70%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .fact-card:hover::before {
-        opacity: 1;
-      }
-
-      .fact-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .fact-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: block;
-      }
-
-      .fact-card h4 {
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-        font-family: "Space Grotesk", sans-serif;
-      }
-
-      .quote-container {
-        background: rgba(19, 11, 30, 0.5);
-        border: 1px solid rgba(255, 215, 0, 0.08);
-        padding: 4rem 2rem;
-        text-align: center;
-        background: linear-gradient(
-          135deg,
-          rgba(107, 47, 163, 0.2),
-          rgba(255, 215, 0, 0.05)
-        );
-        border-radius: 20px;
-        margin: 3rem 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .quote-container::before {
-        content: '"';
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 8rem;
-        color: rgba(76, 201, 240, 0.1);
-        font-family: "Georgia", serif;
-      }
-
-      blockquote {
-        font-size: 1.5rem;
-        font-style: italic;
-        color: var(--accent-color);
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      blockquote cite {
-        display: block;
-        margin-top: 1rem;
-        font-size: 1rem;
-        color: var(--text-color);
-      }
-
-      .speed-tracker {
-        background: rgba(19, 11, 30, 0.5);
-        border: 1px solid rgba(255, 215, 0, 0.08);
-        background: linear-gradient(
-          145deg,
-          rgba(107, 47, 163, 0.2),
-          rgba(255, 215, 0, 0.1)
-        );
-        border-radius: 15px;
-        padding: 2rem;
-        text-align: center;
-        margin: 2rem 0;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .speed-tracker::after {
-        content: "";
-        position: absolute;
-        top: 0;
         right: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          circle at bottom right,
-          rgba(76, 201, 240, 0.1),
-          transparent 70%
-        );
+        top: -2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 0 10px white;
       }
 
-      .speed-stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        margin-top: 1.5rem;
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
       }
 
-      .speed-number {
-        font-size: 2.5rem;
-        color: var(--accent-color);
+      @keyframes comet {
+        0% {
+          left: -10%;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          left: 110%;
+          opacity: 0;
+        }
+      }
+
+      /* Typography Styles */
+      .highlight {
+        background: linear-gradient(120deg, #ff8a00, #da1b60);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
         font-weight: bold;
       }
 
-      .speed-unit {
-        font-size: 1.2rem;
-        color: var(--text-color);
-        margin-left: 0.5rem;
+      .quote {
+        font-style: italic;
+        font-size: 1.3rem;
+        color: #e2e8f0;
+        border-left: 3px solid #ff8a00;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
       }
 
-      /* .container1 {
-            background: linear-gradient(180deg, var(--bg-color) 0%, rgba(11, 60, 145, 0) 100%);
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(76, 201, 240, 0.1);
-        }
+      /* Footer */
+      .cosmic-footer {
+        text-align: center;
+        padding: 2rem;
+        color: #b8c2cc;
+        font-size: 0.9rem;
+        background: rgba(0, 0, 0, 0.3);
+        margin-top: 3rem;
+      }
 
-      .logo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            max-width: 200px;
-            height: auto;
-            transition: transform 0.3s ease;
-            filter: drop-shadow(0 0 10px rgba(76, 201, 240, 0.3));
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        } */
-
+      /* Responsive */
       @media (max-width: 768px) {
-        .fact-cards {
-          grid-template-columns: 1fr;
+
+        .cosmic-header{
+          padding: 2rem 1rem;
+        }
+        .cosmic-header h1 {
+          font-size: 2rem; /* Reduced from 2.5rem */
         }
 
-        .speed-stats {
-          grid-template-columns: 1fr;
-          gap: 1rem;
+        .cosmic-header p {
+          font-size: 1rem; /* Reduced font size for header paragraph */
         }
 
-        blockquote {
-          font-size: 1.2rem;
-          padding: 0 1rem;
+        .article-card h2 {
+          font-size: 1.8rem; /* Reduced from 2.2rem */
         }
 
-        .book-page {
-          padding: 2rem;
+        .article-card p {
+          font-size: 1rem; /* Reduced from 1.1rem */
         }
 
-        .quote-container {
-          padding: 3rem 1.5rem;
+        .quote {
+          font-size: 1.1rem; /* Reduced from 1.3rem */
         }
 
-        .quote-container::before {
-          font-size: 6rem;
+        .cosmic-footer {
+          font-size: 0.8rem; /* Reduced from 0.9rem */
         }
 
-        .timeline-item {
-          padding-left: 2rem;
-        }
-
-        .logo {
-          max-width: 150px;
-        }
-
-        .footer {
-          padding: 2rem 0;
-        }
-
-        h1 {
-          font-size: 1.8rem;
-          margin-bottom: 1.5rem;
-        }
-
-        h3 {
-          font-size: 1.2rem;
-          margin-bottom: 0.8rem;
-        }
-
-        p {
-          font-size: 0.9rem;
-          line-height: 1.6;
-        }
-
-        .book-page p {
-          font-size: 0.9rem;
-          line-height: 1.6;
-        }
-
-        .stat-number {
-          font-size: 1.8rem;
-        }
-
-        .stat-card div:not(.stat-number) {
-          font-size: 0.8rem;
-        }
-
-        .highlight-box {
+        .article-card {
           padding: 1.5rem;
         }
 
-        .highlight-box h3 {
-          font-size: 1.1rem;
-        }
-
-        .highlight-box ul li {
-          font-size: 0.85rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .speed-number {
-          font-size: 1.8rem;
-        }
-
-        .speed-unit {
-          font-size: 0.9rem;
-        }
-
-        .speed-stats p {
-          font-size: 0.85rem;
-        }
-
-        .fact-card h4 {
-          font-size: 1.1rem;
-        }
-
-        .fact-card p {
-          font-size: 0.85rem;
-        }
-
-        .fact-icon {
-          font-size: 2rem;
-        }
-
-        .timeline-item h3 {
-          font-size: 1.1rem;
-        }
-
-        .timeline-item p {
-          font-size: 0.85rem;
-        }
-
-        blockquote {
-          font-size: 1.1rem;
-        }
-
-        blockquote cite {
-          font-size: 0.85rem;
-        }
-
-        .footer p {
-          font-size: 0.8rem;
-        }
-
-        .stat-grid {
-          grid-template-columns: 1fr;
-          gap: 1rem;
-          margin: 1.5rem auto; /* Changed from margin: 1.5rem 0 */
-          padding: 0;
-          width: 100%;
-          max-width: 280px; /* Added max-width to contain cards */
-        }
-
-        .stat-card {
-          padding: 1.2rem;
-          width: 100%;
+        .floating-planet,
+        .floating-comet {
+          display: none;
         }
       }
 
       @media (max-width: 480px) {
-        h1 {
-          font-size: 1.6rem;
+        .cosmic-header h1 {
+          font-size: 1.5rem; /* Further reduced from 2rem */
         }
 
-        .stat-number {
-          font-size: 1.6rem;
+        .cosmic-header p {
+          font-size: 0.9rem; /* Further reduced font size for header paragraph */
         }
 
-        .speed-number {
-          font-size: 1.6rem;
+        .article-card h2 {
+          font-size: 1.5rem; /* Further reduced from 1.8rem */
         }
 
-        blockquote {
-          font-size: 1rem;
-        }
-      }
-
-      .article-section {
-        margin-bottom: 2.5rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid rgba(76, 201, 240, 0.1);
-      }
-
-      .article-section:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-      }
-
-      .article-section h2 {
-        color: var(--accent-color);
-        font-size: 1.8rem;
-        margin-bottom: 1.2rem;
-        font-family: "Space Grotesk", sans-serif;
-      }
-
-      .mission-highlight {
-        background: rgba(19, 11, 30, 0.4);
-        border-left: 3px solid rgba(255, 215, 0, 0.3);
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin: 1.5rem 0;
-      }
-
-      .mission-highlight h3 {
-        color: var(--accent-color);
-        margin-bottom: 0.8rem;
-        font-size: 1.2rem;
-      }
-
-      .discovery-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .discovery-list li {
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-        position: relative;
-      }
-
-      .discovery-list li::before {
-        content: "•";
-        color: var(--accent-color);
-        position: absolute;
-        left: 0;
-        font-size: 1.2rem;
-      }
-
-      .article-meta {
-        font-size: 0.7rem;
-      }
-
-      @media (max-width: 768px) {
-        .article-section h2 {
-          font-size: 1.4rem;
+        .article-card p {
+          font-size: 0.9rem; /* Further reduced from 1rem */
         }
 
-        .article-section {
-          margin-bottom: 2rem;
-          padding-bottom: 1.5rem;
+        .quote {
+          font-size: 1rem; /* Further reduced from 1.1rem */
         }
 
-        .mission-highlight {
-          padding: 1.2rem;
+        .cosmic-footer {
+          font-size: 0.7rem; /* Further reduced from 0.8rem */
         }
 
-        .mission-highlight h3 {
-          font-size: 1.1rem;
-        }
-
-        .discovery-list li {
-          font-size: 0.9rem;
-          padding-left: 1.2rem;
+        .article-card {
+          padding: 1rem; /* Reduced padding for smaller screens */
         }
       }
 
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 1px, transparent 1px),
-            radial-gradient(circle at 80% 40%, rgba(255, 215, 0, 0.1) 1px, transparent 1px),
-            radial-gradient(circle at 40% 70%, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
-        background-size: 100px 100px;
-        z-index: -1;
-        pointer-events: none;
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 3rem auto;
+        padding: 2rem;
+        max-width: 1200px;
+        background: rgba(15, 15, 35, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .stat-item {
+        text-align: center;
+        color: #f0f4f8;
+      }
+
+      .stat-item h3 {
+        font-size: 2rem;
+        margin: 0;
+        color: #ff8a00;
+        font-family: "Orbitron", sans-serif;
+      }
+
+      .stat-item p {
+        font-size: 1rem;
+        margin: 0.5rem 0 0;
+        color: #b8c2cc;
       }
     </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <!--<div class="container1">
-    <div class="logo-container">
-        <img src="logo1.png" alt="Logo" class="logo" width="700" height="600" />
-      </div>
-    </div>-->
-
-    <div class="article-meta">
-      <time>Last Updated: March 27, 2025</time>
-      <span class="author">By Space Research Division</span>
+    <div class="cosmic-header">
+      <h1>VOYAGER BEYOND</h1>
+      <p>
+        Exploring the furthest reaches of human knowledge and the cosmic
+        frontiers that await us
+      </p>
+      <div class="floating-planet"></div>
+      <div class="floating-comet"></div>
     </div>
 
     <div class="container">
-      <div class="book-page">
-        <h1>Voyager Beyond</h1>
-
-        <!-- Introduction Section -->
-        <div class="article-section">
-          <h2>The Beginning of an Epic Journey</h2>
-          <p>
-            Launched in 1977, NASA's Voyager program has been a monumental
-            chapter in the history of space exploration. The twin spacecraft,
-            Voyager 1 and Voyager 2, were designed to study the outer planets of
-            our solar system. However, their missions have evolved dramatically,
-            pushing the boundaries of human understanding and exploration into
-            interstellar space.
-          </p>
-        </div>
-
-        <!-- Launch Details -->
-        <div class="article-section">
-          <h2>The Launch</h2>
-          <p>
-            Voyager 1 and Voyager 2 were launched within weeks of each other in
-            1977, with Voyager 2 departing first on August 20 and Voyager 1
-            following on September 5. The initial mission objective was to
-            explore Jupiter and Saturn, their moons, and their ring systems.
-          </p>
-
-          <div class="mission-highlight">
-            <h3>Gravitational Assist Technique</h3>
-            <p>
-              The two spacecraft utilized a unique gravitational assist
-              technique, slingshotting around planets to gain speed and alter
-              their trajectories.
-            </p>
-          </div>
-        </div>
-
-        <!-- Planetary Encounters -->
-        <div class="article-section">
-          <h2>Planetary Discoveries</h2>
-          <ul class="discovery-list">
-            <li>
-              <strong>Jupiter (1979):</strong> Captured stunning images
-              revealing complex atmosphere and extensive moon system
-            </li>
-            <li>
-              <strong>Saturn (1981):</strong> Detailed studies of ring
-              structures and atmospheric patterns
-            </li>
-            <li>
-              <strong>Uranus & Neptune:</strong> First-ever close-up
-              observations and groundbreaking discoveries
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="fact-cards">
-        <div class="fact-card">
-          <span class="fact-icon">🚀</span>
-          <h4>Did You Know?</h4>
-          <p>
-            The Voyager's computer has only 69.63 kilobytes of memory, about
-            240,000 times less than a modern smartphone!
-          </p>
-        </div>
-        <div class="fact-card">
-          <span class="fact-icon">💿</span>
-          <h4>Golden Record</h4>
-          <p>
-            Each Voyager carries a gold-plated record containing sounds and
-            images of Earth, including greetings in 55 languages.
-          </p>
-        </div>
-      </div>
-
-      <div class="book-page">
-        <h1>Voyager's Journey into Interstellar Space</h1>
-
-        <!-- Heliopause Crossing Section -->
-        <div class="article-section">
-          <h2>Crossing the Final Frontier</h2>
-          <p>
-            After completing their primary missions, both Voyager spacecraft
-            entered a phase known as the Voyager Interstellar Mission. This
-            stage of exploration began as Voyager 1 crossed the heliopause—the
-            boundary between the solar wind and the interstellar medium—on
-            August 25, 2012.
-          </p>
-
-          <div class="mission-highlight">
-            <h3>Historic Achievement</h3>
-            <p>
-              Voyager 2 followed suit, crossing this critical boundary on
-              November 5, 2018, marking humanity's second venture into
-              interstellar space.
-            </p>
-          </div>
-        </div>
-
-        <!-- Interstellar Environment -->
-        <div class="article-section">
-          <h2>Beyond Our Solar Bubble</h2>
-          <p>
-            The heliopause represents the outer limits of the Sun's influence,
-            where the solar wind is no longer strong enough to push back against
-            the interstellar medium. The Voyager probes now travel through a
-            realm of space where the environment is vastly different from that
-            of our solar system.
-          </p>
-
-          <div class="mission-highlight">
-            <h3>Current Environment</h3>
-            <ul class="discovery-list">
-              <li>Decreased solar particle intensity</li>
-              <li>Different magnetic field characteristics</li>
-              <li>Unique plasma wave patterns</li>
-              <li>Higher cosmic ray concentrations</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Scientific Discoveries -->
-        <div class="article-section">
-          <h2>Groundbreaking Discoveries</h2>
-          <p>
-            The scientific discoveries made by the Voyager spacecraft have been
-            numerous and varied. One of the most significant findings has been
-            the detection of cosmic rays, which are high-energy particles
-            originating from outside our solar system.
-          </p>
-
-          <div class="highlight-box">
-            <h3>Key Findings</h3>
-            <ul>
-              <li>Measurement of interstellar medium composition</li>
-              <li>Detection of plasma waves in unexplored space</li>
-              <li>Mapping of magnetic fields beyond heliopause</li>
-              <li>Documentation of solar wind interaction boundaries</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Data Analysis -->
-        <div class="article-section">
-          <h2>Ongoing Research</h2>
-          <p>
-            Voyager 1 has reported observations of a decrease in the intensity
-            of solar particles as it travels further into interstellar space.
-            This change provides critical information about the interaction
-            between solar wind and the interstellar medium, enhancing our
-            understanding of the heliosphere's structure.
-          </p>
-
-          <p>
-            Moreover, Voyager 2 has provided valuable data on the magnetic field
-            and plasma waves in interstellar space. These measurements
-            contribute to our understanding of how stars and their surrounding
-            environments interact, revealing insights into stellar life cycles
-            and the dynamics of the galaxy.
-          </p>
-        </div>
-      </div>
-
-      <div class="quote-container">
-        <blockquote>
-          "The Voyagers are destined—perhaps eternally—to wander the Milky Way."
-          <cite>- Edward Stone, Voyager Project Scientist</cite>
-        </blockquote>
-      </div>
-
-      <div class="book-page">
-        <h1>Future of the Voyager Missions</h1>
+      <article class="article-card card-nebula">
+        <h2>The Nebulae: Cosmic Cradles of Creation</h2>
         <p>
-          As of now, both Voyager spacecraft are well beyond the reach of direct
-          control, with each probe operating on limited power from its
-          radioisotope thermoelectric generators (RTGs). The power output of
-          these generators decreases over time, meaning that the instruments on
-          board will gradually be turned off to conserve energy. Voyager 1 is
-          expected to operate until around 2025, while Voyager 2 may continue
-          until 2027 or beyond, depending on the power consumption and mission
-          prioritization. Even as their power dwindles, the legacy of the
-          Voyager missions is far from over. The data collected over more than
-          four decades will continue to be analyzed and interpreted for years to
-          come. Scientists around the world are still uncovering new insights
-          from the wealth of information sent back by these pioneering
-          spacecraft, contributing to our understanding of the universe and
-          inspiring future generations of explorers.
-        </p>
-      </div>
-
-      <div class="speed-tracker">
-        <h3>Live Speed Tracker</h3>
-        <div class="speed-stats">
-          <div>
-            <span class="speed-number">17.0</span>
-            <span class="speed-unit">km/s</span>
-            <p>Voyager 1 Speed</p>
-          </div>
-          <div>
-            <span class="speed-number">15.8</span>
-            <span class="speed-unit">km/s</span>
-            <p>Voyager 2 Speed</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-page">
-        <h1>Technical Specifications and Achievements</h1>
-        <div class="stat-grid">
-          <div class="stat-card">
-            <div class="stat-number">23.3B</div>
-            <div>KM from Earth</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">45</div>
-            <div>Years Active</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">11</div>
-            <div>Scientific Instruments</div>
-          </div>
-        </div>
-
-        <div class="highlight-box">
-          <h3>Key Discoveries</h3>
-          <ul>
-            <li>Jupiter's complex atmospheric dynamics</li>
-            <li>Saturn's ring structure details</li>
-            <li>First measurements of interstellar medium</li>
-            <li>Detection of the heliosphere boundary</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="book-page">
-        <h1>Mission Timeline</h1>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h3>1977</h3>
-            <p>Launch of Voyager 1 and 2</p>
-          </div>
-          <div class="timeline-item">
-            <h3>1979</h3>
-            <p>Jupiter flyby observations</p>
-          </div>
-          <div class="timeline-item">
-            <h3>2012</h3>
-            <p>Voyager 1 enters interstellar space</p>
-          </div>
-          <div class="timeline-item">
-            <h3>2018</h3>
-            <p>Voyager 2 crosses heliopause</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="book-page">
-        <h1>Scientific Legacy</h1>
-        <p>
-          The Voyager space probes, launched in 1977, have profoundly impacted
-          science by extending our knowledge beyond the outer planets into
-          interstellar space. They provided unprecedented data on Jupiter,
-          Saturn, Uranus, and Neptune, revealing details about their
-          atmospheres, moons, and rings. As the first human-made objects to exit
-          the heliosphere, Voyager 1 and 2 have measured interstellar magnetic
-          fields, particles, and plasma, offering insights into the space beyond
-          our solar system. Their ongoing mission, still active as of March
-          2025, continues to contribute valuable data, enhancing our
-          understanding of the cosmos and inspiring future exploration..
+          Scattered across the galaxy like jewels in the void, nebulae are the
+          nurseries where stars are born. These vast clouds of gas and dust,
+          illuminated by the energetic radiation of newborn stars, create some
+          of the most breathtaking vistas in the universe.
         </p>
 
-        <div class="highlight-box">
-          <h3>Ongoing Research</h3>
-          <p>Current studies using Voyager data include:</p>
-          <ul>
-            <li>Interstellar medium composition analysis</li>
-            <li>Cosmic ray intensity measurements</li>
-            <li>Magnetic field mapping</li>
-            <li>Plasma wave observations</li>
-          </ul>
-        </div>
+        <p class="quote">
+          "We are all made of star-stuff. The nitrogen in our DNA, the calcium
+          in our teeth, the iron in our blood - all were forged in the hearts of
+          collapsing stars."
+          <span style="display: block; text-align: right">— Carl Sagan</span>
+        </p>
+
+        <p>
+          The <span class="highlight">Orion Nebula</span>, visible to the naked
+          eye as a fuzzy patch in Orion's sword, is one of the most studied
+          stellar nurseries. Within its glowing gases, hundreds of protostars
+          are currently forming, their violent births shaping the nebula into
+          fantastic pillars and caverns.
+        </p>
+
+        <p>
+          Nebulae come in several types: emission nebulae that glow with their
+          own light, reflection nebulae that shine by reflected starlight, and
+          dark nebulae that appear as silhouettes against brighter backgrounds.
+          The <span class="highlight">Pillars of Creation</span> in the Eagle
+          Nebula, made famous by Hubble's iconic image, demonstrate all three
+          types in one spectacular region.
+        </p>
+      </article>
+
+      <article class="article-card card-blackhole">
+        <h2>Black Holes: The Universe's Most Mysterious Phenomena</h2>
+        <p>
+          Black holes represent one of the most extreme predictions of
+          Einstein's theory of general relativity - regions of space where
+          gravity is so intense that nothing, not even light, can escape.
+        </p>
+
+        <p>
+          The <span class="highlight">event horizon</span> marks the point of no
+          return. Cross this boundary, and you're destined to meet the
+          singularity at the black hole's heart - a point of infinite density
+          where our current understanding of physics breaks down completely.
+        </p>
+
+        <p>
+          In 2019, humanity captured its first image of a black hole's shadow at
+          the center of galaxy M87. This supermassive black hole, weighing in at
+          6.5 billion solar masses, revealed the glowing accretion disk
+          predicted by theory, with the black hole's shadow at its center.
+        </p>
+
+        <p>
+          Black holes aren't just cosmic vacuum cleaners - they play crucial
+          roles in galaxy formation and evolution. Nearly every large galaxy
+          appears to host a supermassive black hole at its center, and the
+          energy released as matter falls in can shape entire galactic
+          ecosystems.
+        </p>
+      </article>
+
+      <article class="article-card card-exoplanet">
+        <h2>Exoplanets: Worlds Beyond Our Solar System</h2>
+        <p>
+          The discovery of planets orbiting other stars has transformed our
+          understanding of the universe. From the first confirmed exoplanet in
+          1992 to the thousands known today, we've learned that planets are
+          common - perhaps outnumbering the stars themselves.
+        </p>
+
+        <p>
+          Exoplanets come in astonishing variety:
+          <span class="highlight">hot Jupiters</span> that orbit closer to their
+          stars than Mercury does to our Sun,
+          <span class="highlight">super-Earths</span> that may be rocky worlds
+          several times more massive than our own, and even potential
+          <span class="highlight">water worlds</span> completely covered by
+          global oceans.
+        </p>
+
+        <p>
+          The search for Earth-like planets in the habitable zones of their
+          stars - where liquid water could exist - has yielded promising
+          candidates. The TRAPPIST-1 system, just 40 light-years away, contains
+          seven Earth-sized planets, three of which orbit in the star's
+          habitable zone.
+        </p>
+
+        <p>
+          Future telescopes like the James Webb Space Telescope will analyze the
+          atmospheres of these distant worlds, searching for signs of life -
+          perhaps answering humanity's oldest question: Are we alone in the
+          universe?
+        </p>
+      </article>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3>13.8 Billion</h3>
+        <p>Years since the Big Bang</p>
+      </div>
+      <div class="stat-item">
+        <h3>100 Billion</h3>
+        <p>Galaxies in the observable universe</p>
+      </div>
+      <div class="stat-item">
+        <h3>4,000+</h3>
+        <p>Confirmed exoplanets</p>
+      </div>
+      <div class="stat-item">
+        <h3>186,000</h3>
+        <p>Miles per second - speed of light</p>
       </div>
     </div>
-    <footer class="footer">
-      <p>© 2025 Space Research Division. All rights reserved.</p>
+
+    <div class="container">
+      <article class="article-card card-voyager">
+        <h2>Voyager Beyond: Humanity's Greatest Journey</h2>
+        <p>
+          The Voyager spacecraft, launched in 1977, represent humanity's most
+          ambitious exploration of the cosmos. These twin probes have traveled
+          farther than any human-made object, carrying with them the hopes and
+          dreams of our species.
+        </p>
+
+        <p>
+          The <span class="highlight">Golden Record</span>, a time capsule of
+          Earth's culture, was included on both spacecraft. It contains sounds,
+          images, and greetings in multiple languages, intended to communicate
+          the story of our world to any extraterrestrial life that might
+          encounter it.
+        </p>
+
+        <p>
+          In 2012, Voyager 1 became the first spacecraft to enter interstellar
+          space, crossing the <span class="highlight">heliopause</span> - the
+          boundary where the Sun's influence ends and the vastness of the galaxy
+          begins. Voyager 2 followed in 2018, providing invaluable data about
+          this uncharted frontier.
+        </p>
+
+        <p>
+          Even as their power dwindles, the Voyager probes continue to send back
+          data, inspiring generations of scientists and dreamers. They remind us
+          of our shared humanity and our innate desire to explore the unknown.
+        </p>
+
+        <p class="quote">
+          "The cosmos is within us. We are made of star-stuff. We are a way for
+          the universe to know itself."
+          <span style="display: block; text-align: right">— Carl Sagan</span>
+        </p>
+      </article>
+    </div>
+
+    <footer class="cosmic-footer">
+      <p>© 2023 Voyager Beyond | Exploring the Cosmos</p>
+      <p>
+        All content is based on current astronomical research and discoveries
+      </p>
     </footer>
   </body>
 </html>
